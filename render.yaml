@@ -15,7 +15,7 @@ services:
       - key: APP_TITLE
         value: "Cards Book"
 
-  - type: pserv
+  - type: db
     name: cards-book-db
-    env: postgres
+    databaseName: cards_book_db
     plan: free
