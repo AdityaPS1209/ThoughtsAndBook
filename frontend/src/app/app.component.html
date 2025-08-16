@@ -1,12 +1,13 @@
 <div class="container">
   <header>
-    <h1>Hello Ananya</h1><br>
-    <h3>I know you like to speak less and keep your feelings to yourself, but I can not live without listening to your inner voices</h3><br>
-    <h3>So, I created this app, here you can just post whatever you feel like as a card and download it as a book. *I have the access to database since I'm hosting the app</h3><br>
-    <h3>With Love, Aditya</h3>
+    <h1>Hello Ananya</h1>
+    <br>
+    
     <button (click)="downloadPdf()">Download as PDF</button>
   </header>
-
+  <h3>I know you like to speak less and keep your feelings to yourself, but I can not live without listening to your inner voices</h3><br>
+    <h3>So, I created this app, here you can just post whatever you feel like as a card and download it as a book. *I have the access to database since I'm hosting the app</h3><br>
+    <h3>With Love, Aditya</h3>
   <div class="card-form">
     <textarea [(ngModel)]="newCardContent" placeholder="Write your card content here..."></textarea>
     <button (click)="addCard()">Add Card</button>
