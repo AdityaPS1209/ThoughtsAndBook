@@ -1,7 +1,7 @@
 [build]
   base = "frontend"
   command = "ng build --configuration production"
-  publish = "dist/browser"
+  publish = "dist/frontend"
 
 [[redirects]]
   from = "/*"
