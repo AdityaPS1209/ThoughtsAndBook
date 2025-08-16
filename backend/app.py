@@ -1,5 +1,6 @@
 import os
 from typing import List
+from contextlib import asynccontextmanager
 from fastapi import FastAPI, Depends, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import StreamingResponse
@@ -10,10 +11,16 @@ from .models import Card
 from .schemas import CardCreate, CardOut
 from .pdf_utils import build_cards_book
 
-# Create tables if they don't exist (beginner-friendly)
-Base.metadata.create_all(bind=engine)
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    # Create tables on startup
+    Base.metadata.create_all(bind=engine)
+    yield
 
-app = FastAPI(title=os.getenv("APP_TITLE", "Cards Book"))
+app = FastAPI(
+    title=os.getenv("APP_TITLE", "Cards Book"),
+    lifespan=lifespan
+)
 
 # CORS
 origins = [o.strip() for o in os.getenv("ALLOWED_ORIGINS", "http://localhost:4200").split(",")]
