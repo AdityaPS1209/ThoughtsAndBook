@@ -1,0 +1,22 @@
+<div class="container">
+  <header>
+    <h1>Cards Book</h1>
+    <button (click)="downloadPdf()">Download as PDF</button>
+  </header>
+
+  <div class="card-form">
+    <textarea [(ngModel)]="newCardContent" placeholder="Write your card content here..."></textarea>
+    <button (click)="addCard()">Add Card</button>
+  </div>
+
+  <div class="card-list">
+    <div *ngFor="let card of cards" class="card">
+      <p>{{ card.content }}</p>
+      <div class="card-footer">
+        <small>{{ card.created_at | date:'short' }}</small>
+        <button (click)="deleteCard(card.id)">Delete</button>
+      </div>
+    </div>
+  </div>
+</div>
+<router-outlet></router-outlet>
