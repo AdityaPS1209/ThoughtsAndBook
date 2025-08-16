@@ -6,16 +6,7 @@ services:
     buildCommand: "pip install -r backend/requirements.txt"
     startCommand: "gunicorn -w 4 -k uvicorn.workers.UvicornWorker backend.app:app"
     envVars:
-      - key: DATABASE_URL
-        fromDatabase:
-          name: cards-book-db
-          property: connectionString
       - key: ALLOWED_ORIGINS
         value: "*" # This should be updated with the Netlify frontend URL
       - key: APP_TITLE
         value: "Cards Book"
-
-  - type: db
-    name: cards-book-db
-    databaseName: cards_book_db
-    plan: free
